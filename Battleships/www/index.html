@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' https://luca-ucsc-teaching-backend.appspot.com 'unsafe-inline'; script-src 'self' https://luca-ucsc-teaching-backend.appspot.com 'unsafe-inline' 'unsafe-eval';">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+<link href="css/style.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="js/randomString.js"></script>
+  <script type="text/javascript" src="js/jquery.js"></script>
+</head>
+
+<body>
+<div id="app">
+  <div>
+    <input v-model="magic_word" placeholder="shared magic word"/>
+    <button v-on:click="set_magic_word">Play and set magic word</button>
+    <i v-if="need_new_magic_word"></i>
+  </div>
+
+  <p class="subtitle-message">{{ message }}</p>
+  <p>{{ game_status }}</p>
+  <p v-if="need_new_magic_word">Can't join the game with that magic word, you are the third player</p>
+
+  <template v-if="my_role == 'x' ">My role is x</template>
+  <template v-if="my_role == 'o' ">My role is o</template>
+    <h4>Ships: green , Hits: red, Misses: grey, Water:blue</h4>
+  <!--DEBUG-->
+
+
+
+<div v-if="can_show_button == true">
+  <h1>Game is over</h1>
+  <h3>
+    Slight bug here, The player who choses to restart will play 2nd on the next game, and in that
+    time period the play new game button will be open, but DURING PLAY it is not visible.
+  </h3>
+  <button  @click="start_new_game">
+    GAME IS OVER CLICK HERE TO RESTART
+  </button>
+</div>
+
+  <!--<button @click="set_new_game">-->
+    <!--Click here to set the button to show-->
+  <!--</button>-->
+
+
+
+
+
+  <!-- SHOOTING BOARD HERE -->
+  <div v-if="my_role == 'x'">
+  <h2>
+  X's Shooting Board
+  </h2>
+    <!-- bind it to o's board, but only display hits and misses emptys -->
+    <table class="board_style">
+      <tr v-for="i in [0,1,2,3,4,5,6,7]">
+        <td v-bind:class="{
+        hit:board_o[8*i+j]==3,
+        miss:board_o[8*i+j]==2,
+        empty:board_o[8*i +j]==0,
+        alsoEmpty:board_o[8*i +j]==1
+        }" @click="shoot_at_o(i,j)" class="cell" v-for="j in [0, 1,2,3,4,5,6,7]">.</td>
+      </tr>
+    </table>
+    <h2>
+  X's Ship Placement Board
+  </h2>
+    <!-- Bind it to x's board and display everything -->
+    <table class="board_style">
+      <tr v-for="i in [0,1,2,3,4,5,6,7]">
+        <td v-bind:class="{
+        hit:board_x[8*i+j]==3,
+        miss:board_x[8*i+j]==2,
+        ship:board_x[8*i+j]==1,
+        empty:board_x[8*i+j]==0
+        }" class="cell" v-for="j in [0, 1, 2,3,4,5,6,7]">{{board_x[8*i+j]}}
+        </td>
+      </tr>
+    </table>
+  </div>
+  <!-- O'S INTERFACE BELOW -->
+
+  <!-- TARGETING BOARD HERE -->
+  <div v-if="my_role == 'o'">
+    <h2>
+ O's Shooting Board
+</h2>
+    <table class="board_style">
+      <tr v-for="i in [0,1,2,3,4,5,6,7]">
+        <td v-for="j in [0,1,2,3,4,5,6,7]" v-bind:class="{
+      empty:board_x[8*i+j]==0,
+      alsoEmpty:board_x[8*i+j]==1,
+      miss:board_x[8*i+j]==2,
+      hit:board_x[8*i+j]==3
+      }" class="cell" @click="shoot_at_x(i,j)">.</td>
+      </tr>
+    </table>
+    <h2>
+  O's ship placements:
+  </h2>
+    <table class="board_style">
+      <tr v-for="i in [0,1,2,3,4,5,6,7]">
+        <td v-for="j in [0,1,2,3,4,5,6,7]" v-bind:class="{
+       empty:board_o[8*i+j]==0,
+       ship:board_o[8*i+j]==1,
+       miss:board_o[8*i+j]==2,
+       hit:board_o[8*i+j]==3
+      }" class="cell">{{board_o[8*i+j]}}
+        </td>
+      </tr>
+    </table>
+  </div>
+  <!-- THIS IS WHERE O'S INTERFACE IS DECLARED -->
+</div>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript" src="js/battleships.js"></script>
+
+</body>
+</html>
+

@@ -1,0 +1,18 @@
+written by: Shane Dalton
+cs101 UCSC Spring2017 smdalton
+
+“I have read and understood the Academic Misconduct Policy for Undergraduates, the related sections 102.01-102.016 and 105.15 of the UC Santa Cruz Student Policies and Regulations Handbook, and the related sections of the class Syllabus”
+
+-Shane Dalton 5/17/2017
+“I wrote this assignment using only permitted sources that do not require citation, according to the syllabus.”
+
+
+ABOUT graph03.c:
+
+	graph03.c is the first analysis program for the processing of a graph represented as an adjacency list. The program when given and input fill will run the algorithm to find the strongly connected components of the graph. It will inform the operator at various times through the use of multiple print statements of the status of the program.
+
+After tracing the dfs tree and populating the finishing time stack, the stack will be printed on as such FSTK: x x x x x 
+
+Then dfs phase 2 will proceed, where the leader of the strongly connected components will be found and displayed in the table.
+
+

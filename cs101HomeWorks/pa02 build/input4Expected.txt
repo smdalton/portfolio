@@ -1,0 +1,24 @@
+==============================
+Undirected mode not set
+Number of nodes is 21
+
+PRINTING ADJACENCY LIST:
+Not Printing reason: input is larger than 20
+
+PRINTING ADJACENCY MATRIX:
+Not printing: n>20
+==============================
+
+PRINTING TRANSPOSED ADJACENCY LIST:
+Not Printing reason: input is larger than 20
+
+PRINTING TRANSPOSED ADJACENCY MATRIX:
+Not printing: n>20
+==============================
+
+PRINTING TWICE TRANSPOSED ADJACENCY LIST:
+Not Printing reason: input is larger than 20
+
+PRINTING TWICE TRANSPOSED ADJACENCY MATRIX:
+Not printing: n>20
+==============================

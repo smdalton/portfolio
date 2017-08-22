@@ -1,0 +1,14 @@
+
+written by: Shane Dalton
+cs101 UCSC Spring2017 smdalton
+
+“I have read and understood the Academic Misconduct Policy for Undergraduates, the related sections 102.01-102.016 and 105.15 of the UC Santa Cruz Student Policies and Regulations Handbook, and the related sections of the class Syllabus”
+
+-Shane Dalton 6/4/2017
+“I wrote this assignment using only permitted sources that do not require citation, according to the syllabus.”
+
+ABOUT greedy.c:
+
+USAGE: <flag: -D or -P > <start vertex> <input file>
+
+        greedy.c When executed will perform a rudimentary analysis on the input graph file in an adjacency list representation. Depending on input flags either(-P for Prim’s MST algorithm) or (-D for Dijkstra’s SSP algorithm). Arrays will be presented showing the values of each vertex’s parent in the tree/path as well as the weight at each edge from source to destination.
